@@ -3,6 +3,11 @@ const incomeAmount = document.querySelector('#income-amount')
 const expensesAmount = document.querySelector('#expenses-amount')
 const savingsPercentage = document.querySelector('#savings-percentage')
 
+const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+})
+
 function getTransactions() {
     return JSON.parse(localStorage.getItem('transactions')) || []
 }
@@ -63,9 +68,9 @@ function getSavingsPercentage() {
 }
 
 function updateDashboard() {
-    balanceAmount.textContent = getBalance()
-    incomeAmount.textContent = getTotalIncome()
-    expensesAmount.textContent = getTotalExpenses()
+    balanceAmount.textContent = formatter.format(getBalance())
+    incomeAmount.textContent = formatter.format(getTotalIncome())
+    expensesAmount.textContent = formatter.format(getTotalExpenses())
     savingsPercentage.textContent = getSavingsPercentage()
 }
 
