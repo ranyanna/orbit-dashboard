@@ -1,3 +1,8 @@
+const balanceAmount = document.querySelector('#balance-amount')
+const incomeAmount = document.querySelector('#income-amount')
+const expensesAmount = document.querySelector('#expenses-amount')
+const savingsPercentage = document.querySelector('#savings-percentage')
+
 function getTransactions() {
     return JSON.parse(localStorage.getItem('transactions')) || []
 }
@@ -52,3 +57,16 @@ function getTotalExpenses() {
 function getBalance() {
     return getTotalIncome() - getTotalExpenses()
 }
+
+function getSavingsPercentage() {
+    return (getTotalIncome() - getTotalExpenses()) / getTotalIncome() * 100
+}
+
+function updateDashboard() {
+    balanceAmount.textContent = getBalance()
+    incomeAmount.textContent = getTotalIncome()
+    expensesAmount.textContent = getTotalExpenses()
+    savingsPercentage.textContent = getSavingsPercentage()
+}
+
+updateDashboard()
