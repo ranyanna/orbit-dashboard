@@ -69,19 +69,34 @@ body {
 }
 
 .nav-group-label {
+    display: block;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 2px;
     color: var(--color-bg-active);
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 .nav-group ul {
     list-style: none;
+    padding-bottom: 10px;
+}
+
+.nav-group li {
+    padding-bottom: 10px;
 }
 
 .nav-link {
+    display: block;
+    padding: 10px;
     text-decoration: none;
     color: var(--color-bg-active);
-    font-size: 15px;
+    font-size: 13px;
+    border-radius: 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-accent);
+    background-color: var(--color-bg-card);
 }
