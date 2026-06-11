@@ -68,7 +68,7 @@ function getSavingsPercentage() {
     if (getTotalIncome() === 0) {
         return 0
     }
-    return (getTotalIncome() - getTotalExpenses()) / getTotalIncome() * 100
+    return Math.round((getTotalIncome() - getTotalExpenses()) / getTotalIncome() * 100)
 }
 
 function updateDashboard() {
@@ -107,6 +107,14 @@ function renderTransactions() {
         transactionsList.appendChild(item)
     })
 }
+
+transactionsList.addEventListener('click', (event) => {
+    if (event.target.classList.contains('btn-delete')) {
+        deleteTransaction(event.target.dataset.id)
+        updateDashboard()
+        renderTransactions()
+    }
+})
 
 updateDashboard()
 renderTransactions()
