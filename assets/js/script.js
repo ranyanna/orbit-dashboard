@@ -3,6 +3,9 @@ const incomeAmount = document.querySelector('#income-amount')
 const expensesAmount = document.querySelector('#expenses-amount')
 const savingsPercentage = document.querySelector('#savings-percentage')
 const transactionsList = document.querySelector('#transactions-list')
+const modalContainer = document.querySelector('.modal-container')
+const newTransaction = document.querySelector('#new-transaction')
+const closeModal = document.querySelector('#close-modal')
 
 const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -114,6 +117,14 @@ transactionsList.addEventListener('click', (event) => {
         updateDashboard()
         renderTransactions()
     }
+})
+
+newTransaction.addEventListener('click', () => {
+    modalContainer.classList.remove('hidden')
+})
+
+closeModal.addEventListener('click', () => {
+    modalContainer.classList.add('hidden')
 })
 
 updateDashboard()
