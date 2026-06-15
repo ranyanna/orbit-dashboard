@@ -86,6 +86,41 @@
       </main>
     </div>
 
+    <div class="modal-container hidden">
+      <p class="new-transaction">
+        Nova Transação
+      </p>
+      <form>
+        <button type="button" id="close-modal">X</button>
+        <label for="description">Descrição</label>
+        <input type="text" id="description" placeholder="Ex: Mercado, salário...">
+
+        <label for="amount">Valor</label>
+        <input type="number" name="amount" id="amount" placeholder="0,00">
+
+       <p>Tipo</p>
+        <input type="radio" name="type" id="income" value="income">
+        <label for="income">Entrada</label>
+        <input type="radio" name="type" id="expense" value="expense">
+        <label for="expense">Saída</label>
+
+        <label for="category">Categoria</label>
+        <select name="category" id="category">
+          <option value="food">Alimentação</option>
+          <option value="transport">Transporte</option>
+          <option value="leisure">Lazer</option>
+          <option value="health">Saúde</option>
+          <option value="education">Educação</option>
+          <option value="other">Outros</option>
+        </select>
+
+        <label for="date">Data</label>
+        <input type="date" name="date" id="date">
+
+        <input type="submit" value="Salvar Transação" id="save-transaction">
+     </form>
+    </div>
+
     <script src="assets/js/script.js"></script>
   </body>
 </html>
