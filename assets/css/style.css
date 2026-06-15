@@ -104,3 +104,117 @@ body {
 .hidden {
     display: none;
 }
+
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+}
+
+.modal-container form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-bg-active);
+    padding: 24px;
+    border-radius: 10px;
+    gap: 12px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modal-label, label, .type-label {
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--color-accent);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-bg-active);
+    border-radius: 10px;
+}
+
+.modal-title {
+    margin-bottom: 20px;
+}
+
+#close-modal {
+    padding: 5px 10px;
+    border-radius: 20%;
+    border: 1px solid var(--color-bg-active);
+    background-color: var(--color-bg-card);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#close-modal:hover {
+    transform: scale(1.05);
+}
+
+.type-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.type-btn {
+    padding: 10px;
+    background-color: var(--color-bg-secondary);
+    border: 2px solid var(--color-bg-active);
+    border-radius: 10px;
+    color: var(--color-accent);
+    transition: background-color 0.3s ease, border 0.3s ease;
+    cursor: pointer;
+}
+
+.type-btn:hover {
+    background-color: var(--color-bg-active);
+    border: 2px solid var(--color-accent);
+}
+
+#category {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-bg-active);
+    border-radius: 10px;
+    color: var(--color-accent);
+}
+
+#date, #save-transaction {
+    color: var(--color-accent);
+}
+
+#save-transaction {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 12px;
+    padding: 13px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#save-transaction:hover {
+    transform: scale(1.05)
+}

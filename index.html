@@ -87,22 +87,33 @@
     </div>
 
     <div class="modal-container hidden">
-      <p class="new-transaction">
-        Nova Transação
-      </p>
       <form>
-        <button type="button" id="close-modal">X</button>
+        <div class="modal-header">
+          <div>
+            <p class="modal-label">Midori</p>
+            <p class="modal-title">Nova Transação</p>
+          </div>
+          <button type="button" id="close-modal">X</button>
+        </div>
         <label for="description">Descrição</label>
-        <input type="text" id="description" placeholder="Ex: Mercado, salário...">
+        <input
+          type="text"
+          id="description"
+          placeholder="Ex: Mercado, salário..."
+        />
 
         <label for="amount">Valor</label>
-        <input type="number" name="amount" id="amount" placeholder="0,00">
+        <input type="number" name="amount" id="amount" placeholder="0,00" />
 
-       <p>Tipo</p>
-        <input type="radio" name="type" id="income" value="income">
-        <label for="income">Entrada</label>
-        <input type="radio" name="type" id="expense" value="expense">
-        <label for="expense">Saída</label>
+        <p class="type-label">Tipo</p>
+        <div class="type-buttons">
+          <button type="button" class="type-btn" data-type="income">
+            Entrada
+          </button>
+          <button type="button" class="type-btn" data-type="expense">
+            Saída
+          </button>
+        </div>
 
         <label for="category">Categoria</label>
         <select name="category" id="category">
@@ -115,10 +126,10 @@
         </select>
 
         <label for="date">Data</label>
-        <input type="date" name="date" id="date">
+        <input type="date" name="date" id="date" />
 
-        <input type="submit" value="Salvar Transação" id="save-transaction">
-     </form>
+        <input type="submit" value="Salvar Transação" id="save-transaction" />
+      </form>
     </div>
 
     <script src="assets/js/script.js"></script>
