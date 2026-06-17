@@ -191,6 +191,11 @@ input {
     border: 2px solid var(--color-accent);
 }
 
+.type-btn.active {
+    background-color: var(--color-accent);
+    color: var(--color-bg-secondary);
+}
+
 #category {
     width: 100%;
     padding: 10px;
@@ -202,6 +207,10 @@ input {
 
 #date, #save-transaction {
     color: var(--color-accent);
+}
+
+#date::-webkit-calendar-picker-indicator {
+    filter: invert(1);
 }
 
 #save-transaction {

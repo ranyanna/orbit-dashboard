@@ -152,6 +152,10 @@ form.addEventListener('submit', (event) => {
 typeButtons.forEach(button => {
     button.addEventListener('click', () => {
         selectedType = button.dataset.type
+
+        typeButtons.forEach(btn => btn.classList.remove('active'))
+
+        button.classList.add('active')
     })
 })
 
