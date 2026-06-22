@@ -14,6 +14,24 @@ const dateInput = document.querySelector('#date')
 const typeButtons = document.querySelectorAll('.type-btn')
 let selectedType = null
 const ctx = document.querySelector('#balance-chart')
+const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Entradas', 'Saídas', 'Saldo'],
+        datasets: [{
+            label: '',
+            data: [getTotalIncome(), getTotalExpenses(), getBalance()],
+            backgroundColor: ['#2D5A2D', '#ef4444', '#22c55e']
+        }]
+    },
+    options: {
+        plugins: {
+            legend: {
+                display: false
+            }
+        }
+    }
+})
 
 
 const formatter = new Intl.NumberFormat('pt-BR', {
@@ -53,7 +71,7 @@ function getTotalIncome() {
     const transactions = getTransactions()
 
     const incomes = transactions.filter(transaction => transaction.type === "income")
-    
+
     const total = incomes.reduce((accumulator, current) => {
         return accumulator + current.amount
     }, 0)
@@ -88,6 +106,8 @@ function updateDashboard() {
     incomeAmount.textContent = formatter.format(getTotalIncome())
     expensesAmount.textContent = formatter.format(getTotalExpenses())
     savingsPercentage.textContent = getSavingsPercentage() + '%'
+    chart.data.datasets[0].data = [getTotalIncome(), getTotalExpenses(), getBalance()]
+    chart.update()
 }
 
 function renderTransactions() {
@@ -115,7 +135,7 @@ function renderTransactions() {
             <button class="btn-delete" data-id="${transaction.id}">✕</button>
         </div>
         `
-    
+
         transactionsList.appendChild(item)
     })
 }
