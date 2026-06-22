@@ -45,7 +45,7 @@ function addTransaction(description, amount, type, category, date) {
 
 function deleteTransaction(id) {
     const transactions = getTransactions()
-    const updatedTransactions = transactions.filter(transaction => transaction.id !== id)
+    const updatedTransactions = transactions.filter(transaction => transaction.id !== parseInt(id))
     saveTransactions(updatedTransactions)
 }
 
