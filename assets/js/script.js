@@ -32,6 +32,7 @@ const chart = new Chart(ctx, {
         }
     }
 })
+const updatedExpenses = document.querySelector('#updated-expenses')
 
 
 const formatter = new Intl.NumberFormat('pt-BR', {
@@ -90,6 +91,12 @@ function getTotalExpenses() {
     return total
 }
 
+function getExpensesCount() {
+    const transactions = getTransactions()
+    const expenses = transactions.filter(transaction => transaction.type === "expense")
+    return expenses.length
+}
+
 function getBalance() {
     return getTotalIncome() - getTotalExpenses()
 }
@@ -108,6 +115,7 @@ function updateDashboard() {
     savingsPercentage.textContent = getSavingsPercentage() + '%'
     chart.data.datasets[0].data = [getTotalIncome(), getTotalExpenses(), getBalance()]
     chart.update()
+    updatedExpenses.textContent = getExpensesCount() + " transações"
 }
 
 function renderTransactions() {
@@ -178,25 +186,6 @@ typeButtons.forEach(button => {
 
         button.classList.add('active')
     })
-})
-
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Entradas', 'Saídas', 'Saldo'],
-        datasets: [{
-            label: '',
-            data: [getTotalIncome(), getTotalExpenses(), getBalance()],
-            backgroundColor: ['#2D5A2D', '#ef4444', '#22c55e']
-        }]
-    },
-    options: {
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    }
 })
 
 updateDashboard()
