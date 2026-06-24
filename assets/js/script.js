@@ -13,27 +13,30 @@ const categoryInput = document.querySelector('#category')
 const dateInput = document.querySelector('#date')
 const typeButtons = document.querySelectorAll('.type-btn')
 const updatedExpenses = document.querySelector('#updated-expenses')
-const ctx = document.querySelector('#balance-chart')
+const categoriesChart = document.querySelector('#categories-chart')
 
 let selectedType = null
 const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL'
 })
-const chart = new Chart(ctx, {
-    type: 'bar',
+const categories = getExpensesByCategories()
+const chart = new Chart(categoriesChart, {
+    type: 'doughnut',
     data: {
-        labels: ['Entradas', 'Saídas', 'Saldo'],
+        labels:['Alimentação', 'Transporte', 'Lazer', 'Saúde', 'Educação', 'Outros'],
         datasets: [{
-            label: '',
-            data: [getTotalIncome(), getTotalExpenses(), getBalance()],
-            backgroundColor: ['#2D5A2D', '#ef4444', '#22c55e']
+            data: [categories.food, categories.transport, categories.leisure, categories.health, categories.education, categories.other],
+            backgroundColor: ['#2D5A2D', '#22C55E', '#EF4444', '#3B82F6', '#FF1EA8', '#FFBF00']
         }]
     },
     options: {
         plugins: {
             legend: {
-                display: false
+                labels: {
+                    usePointStyle: true,
+                    pointStyle: 'circle'
+                }
             }
         }
     }
@@ -96,6 +99,23 @@ function getExpensesCount() {
     return expenses.length
 }
 
+function getExpensesByCategories() {
+    const transactions = getTransactions()
+    const expenses = transactions.filter(transaction => transaction.type === "expense")
+    const categories = {
+        food: 0,
+        transport: 0,
+        leisure: 0,
+        health: 0,
+        education: 0,
+        other: 0
+    }
+    expenses.forEach(expense => {
+        categories[expense.category] += expense.amount
+    })
+    return categories
+}
+
 function getBalance() {
     return getTotalIncome() - getTotalExpenses()
 }
@@ -112,8 +132,11 @@ function updateDashboard() {
     incomeAmount.textContent = formatter.format(getTotalIncome())
     expensesAmount.textContent = formatter.format(getTotalExpenses())
     savingsPercentage.textContent = getSavingsPercentage() + '%'
-    chart.data.datasets[0].data = [getTotalIncome(), getTotalExpenses(), getBalance()]
+
+    const updatedCategories = getExpensesByCategories()
+    chart.data.datasets[0].data = [updatedCategories.food, updatedCategories.transport, updatedCategories.leisure, updatedCategories.health, updatedCategories.education,updatedCategories.other]
     chart.update()
+
     updatedExpenses.textContent = getExpensesCount() + " transações"
 }
 
