@@ -14,6 +14,7 @@ const dateInput = document.querySelector('#date')
 const typeButtons = document.querySelectorAll('.type-btn')
 const updatedExpenses = document.querySelector('#updated-expenses')
 const categoriesChart = document.querySelector('#categories-chart')
+const categoriesList = document.querySelector('#categories-list')
 const categoryLabels = {
     food: 'Alimentação',
     transport: 'Transporte',
@@ -140,6 +141,7 @@ function updateDashboard() {
     incomeAmount.textContent = formatter.format(getTotalIncome())
     expensesAmount.textContent = formatter.format(getTotalExpenses())
     savingsPercentage.textContent = getSavingsPercentage() + '%'
+    renderCategories()
 
     const updatedCategories = getExpensesByCategories()
     chart.data.datasets[0].data = [updatedCategories.food, updatedCategories.transport, updatedCategories.leisure, updatedCategories.health, updatedCategories.education,updatedCategories.other]
@@ -147,6 +149,25 @@ function updateDashboard() {
 
     const count = getExpensesCount()
     updatedExpenses.textContent = count + (count === 1 ? " transação" : " transações")
+}
+
+function renderCategories() {
+    const categories = getExpensesByCategories()
+    categoriesList.innerHTML = ''
+
+    Object.keys(categories).forEach(category => {
+        const item = document.createElement('li')
+        item.innerHTML = `
+        <div class="categories-description">
+        <h3>${categoryLabels[category]}</h3>
+        </div>
+        <div class="categories-value">
+        <p class="categories-amount">${categories[category]}</p>
+        </div>
+        `
+
+        categoriesList.appendChild(item)
+    })
 }
 
 function renderTransactions() {
@@ -221,3 +242,4 @@ typeButtons.forEach(button => {
 
 updateDashboard()
 renderTransactions()
+renderCategories()
