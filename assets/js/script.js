@@ -42,10 +42,7 @@ const chart = new Chart(categoriesChart, {
     options: {
         plugins: {
             legend: {
-                labels: {
-                    usePointStyle: true,
-                    pointStyle: 'circle'
-                }
+                display: false,
             }
         }
     }
@@ -162,7 +159,7 @@ function renderCategories() {
         <h3>${categoryLabels[category]}</h3>
         </div>
         <div class="categories-value">
-        <p class="categories-amount">${categories[category]}</p>
+        <p class="categories-amount">${formatter.format(categories[category])}</p>
         </div>
         `
 
