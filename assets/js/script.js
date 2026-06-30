@@ -44,6 +44,7 @@ const chart = new Chart(categoriesChart, {
         labels:['Alimentação', 'Transporte', 'Lazer', 'Saúde', 'Educação', 'Outros'],
         datasets: [{
             data: [categories.food, categories.transport, categories.leisure, categories.health, categories.education, categories.other],
+            borderWidth: 0,
             backgroundColor: ['#2D5A2D', '#22C55E', '#EF4444', '#3B82F6', '#FF1EA8', '#FFBF00']
         }]
     },
