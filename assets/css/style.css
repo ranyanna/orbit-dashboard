@@ -241,6 +241,13 @@ input {
     padding-top: 10px;
 }
 
+.categories-empty {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #date, #save-transaction {
     color: var(--color-accent);
 }
