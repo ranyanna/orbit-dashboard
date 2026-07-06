@@ -417,3 +417,10 @@ input {
     background-color: var(--color-accent);
     color: var(--color-bg);
 }
+
+.transaction-icon {
+    background-color: var(--color-bg-card);
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin: 10px; 
+}

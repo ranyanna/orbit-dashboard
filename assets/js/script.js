@@ -24,6 +24,15 @@ const categoryLabels = {
     education: 'Educação',
     other: 'Outros'
 }
+const categoryIcons = {
+    food: '🍔',
+    transport: '🚗',
+    leisure: '🍿',
+    health: '🩺',
+    education: '📖',
+    other: '⭐'
+}
+
 const categoryColors = {
     food: '#2D5A2D',
     transport: '#22C55E',
@@ -192,10 +201,13 @@ function renderTransactions() {
         const item = document.createElement('li')
 
         item.innerHTML = `
-        <div class="transaction-details">
-        <div class="transaction-description">
-            <p class="transaction-title">${transaction.description}</p>
+       <div class="transaction-icon">
+            ${categoryIcons[transaction.category]}
         </div>
+        <div class="transaction-details">
+            <div class="transaction-description">
+                <p class="transaction-title">${transaction.description}</p>
+            </div>
         <div class="transaction-info">
             <p class="transaction-category">${categoryLabels[transaction.category]} · 
             <span class="transaction-date">${transaction.date}</span>
@@ -204,11 +216,11 @@ function renderTransactions() {
         </div>
         <div class="transaction-value">
             <p class="transaction-amount ${transaction.type === 'income' ? 'amount-income' : 'amount-expense'}">
-        ${transaction.type === 'income' ? '+ ' : '- '}${formatter.format(transaction.amount)}
+            ${transaction.type === 'income' ? '+ ' : '- '}${formatter.format(transaction.amount)}
             </p>
         </div>
         <div class="remove-btn">
-            <button class="btn-delete" data-id="${transaction.id}">X</button>
+            <button class="btn-delete" data-id="${transaction.id}">✕</button>
         </div>
         `
 
