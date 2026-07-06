@@ -42,7 +42,7 @@ const categories = getExpensesByCategories()
 const chart = new Chart(categoriesChart, {
     type: 'doughnut',
     data: {
-        labels:['Alimentação', 'Transporte', 'Lazer', 'Saúde', 'Educação', 'Outros'],
+        labels: ['Alimentação', 'Transporte', 'Lazer', 'Saúde', 'Educação', 'Outros'],
         datasets: [{
             data: [categories.food, categories.transport, categories.leisure, categories.health, categories.education, categories.other],
             borderWidth: 0,
@@ -158,7 +158,7 @@ function updateDashboard() {
     renderCategories()
 
     const updatedCategories = getExpensesByCategories()
-    chart.data.datasets[0].data = [updatedCategories.food, updatedCategories.transport, updatedCategories.leisure, updatedCategories.health, updatedCategories.education,updatedCategories.other]
+    chart.data.datasets[0].data = [updatedCategories.food, updatedCategories.transport, updatedCategories.leisure, updatedCategories.health, updatedCategories.education, updatedCategories.other]
     chart.update()
 
     const count = getExpensesCount()
@@ -192,17 +192,19 @@ function renderTransactions() {
         const item = document.createElement('li')
 
         item.innerHTML = `
+        <div class="transaction-details">
         <div class="transaction-description">
-            <h3>${transaction.description}</h3>
+            <p class="transaction-title">${transaction.description}</p>
         </div>
         <div class="transaction-info">
-            <p class="transaction-category">${categoryLabels[transaction.category]} 
+            <p class="transaction-category">${categoryLabels[transaction.category]} · 
             <span class="transaction-date">${transaction.date}</span>
             </p>
         </div>
+        </div>
         <div class="transaction-value">
             <p class="transaction-amount ${transaction.type === 'income' ? 'amount-income' : 'amount-expense'}">
-            ${formatter.format(transaction.amount)}
+        ${transaction.type === 'income' ? '+ ' : '- '}${formatter.format(transaction.amount)}
             </p>
         </div>
         <div class="remove-btn">
