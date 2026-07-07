@@ -34,6 +34,8 @@ body {
 }
 
 .sidebar {
+    display: flex;
+    flex-direction: column;
     background-color: var(--color-bg-secondary);
     position: sticky;
     top: 0;
@@ -68,6 +70,7 @@ body {
 
 .sidebar-nav {
     padding: 20px;   
+    flex: 1;
 }
 
 .nav-group-label {
@@ -101,6 +104,15 @@ body {
 .nav-link:hover {
     color: var(--color-accent);
     background-color: var(--color-bg-card);
+}
+
+.footer-sidebar {
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-top: 1px solid var(--color-bg-card);
+    color: var(--color-bg-active);
 }
 
 .hidden {

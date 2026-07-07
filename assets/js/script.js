@@ -16,6 +16,7 @@ const updatedExpenses = document.querySelector('#updated-expenses')
 const categoriesChart = document.querySelector('#categories-chart')
 const categoriesList = document.querySelector('#categories-list')
 const categoriesEmpty = document.querySelector('.categories-empty')
+const footerText = document.querySelector('#footer-text')
 const categoryLabels = {
     food: 'Alimentação',
     transport: 'Transporte',
@@ -164,6 +165,7 @@ function updateDashboard() {
         categoriesEmpty.classList.add('hidden')
         categoriesChart.classList.remove('hidden')
     }
+
     renderCategories()
 
     const updatedCategories = getExpensesByCategories()
@@ -270,3 +272,6 @@ typeButtons.forEach(button => {
 
 updateDashboard()
 renderTransactions()
+
+const now = new Date()
+footerText.textContent = now.toLocaleString('pt-BR', {month: 'long'}) + ' · ' + now.getFullYear()
