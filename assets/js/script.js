@@ -216,7 +216,7 @@ function renderTransactions() {
             </div>
         <div class="transaction-info">
             <p class="transaction-category">${categoryLabels[transaction.category]} · 
-            <span class="transaction-date">${new Date(transaction.date).toLocaleDateString('pt-BR')}</span>
+            <span class="transaction-date">${new Date(transaction.date + 'T00:00:00').toLocaleDateString('pt-BR')}</span>
             </p>
         </div>
         </div>
