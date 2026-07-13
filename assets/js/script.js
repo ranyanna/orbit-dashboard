@@ -54,11 +54,11 @@ const categories = getExpensesByCategories()
 const chart = new Chart(categoriesChart, {
     type: 'doughnut',
     data: {
-        labels: ['Alimentação', 'Transporte', 'Lazer', 'Saúde', 'Educação', 'Outros'],
+        labels: Object.values(categoryLabels),
         datasets: [{
-            data: [categories.food, categories.transport, categories.leisure, categories.health, categories.education, categories.other],
+            data: Object.values(categories),
             borderWidth: 0,
-            backgroundColor: ['#2D5A2D', '#22C55E', '#EF4444', '#3B82F6', '#FF1EA8', '#FFBF00']
+            backgroundColor: Object.values(categoryColors)
         }]
     },
     options: {
@@ -190,7 +190,7 @@ function updateDashboard() {
     renderCategories()
 
     const updatedCategories = getExpensesByCategories()
-    chart.data.datasets[0].data = [updatedCategories.food, updatedCategories.transport, updatedCategories.leisure, updatedCategories.health, updatedCategories.education, updatedCategories.other]
+    chart.data.datasets[0].data = Object.values(updatedCategories)
     chart.update()
 
     const monthlyData = getExpensesByMonth()
