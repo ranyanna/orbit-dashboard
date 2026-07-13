@@ -37,12 +37,12 @@ const categoryIcons = {
 }
 
 const categoryColors = {
-    food: '#2D5A2D',
-    transport: '#22C55E',
-    leisure: '#EF4444',
-    health: '#3B82F6',
-    education: '#FF1EA8',
-    other: '#FFBF00'
+    food: '#FB923C',
+    transport: '#60A5FA',
+    leisure: '#C084FC',
+    health: '#4ADE80',
+    education: '#FDE047',
+    other: '#94A3B8'
 }
 
 let selectedType = null
@@ -77,7 +77,7 @@ const barChart = new Chart(balanceChart, {
         labels: balance.labels,
         datasets: [{
             data: balance.data,
-            backgroundColor: '#2D5A2D'
+            backgroundColor: '#22D3EE'
         }]
     },
     options: {
