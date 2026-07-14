@@ -265,6 +265,8 @@ transactionsList.addEventListener('click', (event) => {
 
 newTransaction.addEventListener('click', () => {
     modalContainer.classList.remove('hidden')
+    const firstFocusableElement = form.querySelectorAll('button, input, select')[0]
+    firstFocusableElement.focus()
 })
 
 closeModal.addEventListener('click', (event) => {
@@ -273,8 +275,22 @@ closeModal.addEventListener('click', (event) => {
 })
 
 document.addEventListener('keydown', (event) => {
+    if (modalContainer.classList.contains('hidden')) return
+
     if (event.key === "Escape") {
         modalContainer.classList.add('hidden')
+    } else if (event.key === "Tab") {
+        const focusableElements = form.querySelectorAll('button, input, select')
+        const firstElement = focusableElements[0]
+        const lastElement = focusableElements[focusableElements.length - 1]
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+            event.preventDefault()
+            lastElement.focus()
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+            event.preventDefault()
+            firstElement.focus()
+        }
     }
 })
 
