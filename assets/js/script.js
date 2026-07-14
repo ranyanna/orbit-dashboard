@@ -136,7 +136,6 @@ function getTotalByType(type) {
     return total
 }
 
-
 function getExpensesCount() {
     const transactions = getTransactions()
     const expenses = transactions.filter(transaction => transaction.type === "expense")
@@ -271,6 +270,12 @@ newTransaction.addEventListener('click', () => {
 closeModal.addEventListener('click', (event) => {
     event.stopPropagation()
     modalContainer.classList.add('hidden')
+})
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === "Escape") {
+        modalContainer.classList.add('hidden')
+    }
 })
 
 form.addEventListener('submit', (event) => {
