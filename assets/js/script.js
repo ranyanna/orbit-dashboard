@@ -118,27 +118,24 @@ function deleteTransaction(id) {
 }
 
 function getTotalIncome() {
-    const transactions = getTransactions()
-
-    const incomes = transactions.filter(transaction => transaction.type === "income")
-
-    const total = incomes.reduce((accumulator, current) => {
-        return accumulator + current.amount
-    }, 0)
-
-    return total
+    return getTotalByType("income")
 }
 
 function getTotalExpenses() {
-    const transactions = getTransactions()
+    return getTotalByType("expense")
+}
 
-    const expenses = transactions.filter(transaction => transaction.type === "expense")
+function getTotalByType(type) {
+     const transactions = getTransactions()
 
-    const total = expenses.reduce((accumulator, current) => {
+    const filteredTransactions = transactions.filter(transaction => transaction.type === type)
+
+    const total = filteredTransactions.reduce((accumulator, current) => {
         return accumulator + current.amount
     }, 0)
     return total
 }
+
 
 function getExpensesCount() {
     const transactions = getTransactions()
@@ -336,3 +333,5 @@ renderTransactions()
 
 const now = new Date()
 footerText.textContent = now.toLocaleString('pt-BR', {month: 'long'}) + ' · ' + now.getFullYear()
+
+
