@@ -1,8 +1,8 @@
-# Orbit
+# Orbit 🛰️ᝰ๋࣭𝜗᭡
 
 Dashboard de controle financeiro pessoal: registre entradas e saídas, acompanhe seu saldo e visualize seus gastos por categoria em gráficos.
 
-🔗 [Ver projeto ao vivo](https://ranyanna.github.io/orbit-dashboard/)
+🔗 [Acesse o projeto](https://ranyanna.github.io/orbit-dashboard/)
 
 ## Funcionalidades
 
